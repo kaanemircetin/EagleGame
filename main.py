@@ -1,11 +1,11 @@
 import turtle
+import random
 
 game_screen = turtle.Screen()
 game_screen.bgcolor("red")
 game_screen.title("Eagle Game")
 
 Franklin = turtle.Turtle()
-
 
 #ScoreBoard
 
@@ -26,6 +26,7 @@ def turtle_switched_red():
 def turtle_switched_blue():
     Franklin.clear()
     Franklin.write(f"You Switched Blue  ", align="center", font=("Courier", 24, "normal"))
+
 
 def increase_score_red():
     global score_a
@@ -125,39 +126,63 @@ def time_counter_white():
 def time_counter_black():
     time_counter.color("black")
 
+
 # don't pass here
 
+# moving image
+game_screen.addshape("eagle.gif.gif")
 
-game_screen.register_shape("eagle.gif.gif")  # Make sure the file is in the same directory
+# Create the turtle objects
+moving_eagle = turtle.Turtle()
+moving_eagle.shape("eagle.gif.gif")
+moving_eagle.penup()
 
-# Load and set the background image (your image)
-image_path = "eagle.gif.gif"  # Replace with your GIF file name
-game_screen.bgpic(image_path)  # Set the image as the background
-
-image_left = -400  # X coordinate of the left edge of the image
-image_right = 400  # X coordinate of the right edge of the image
-image_bottom = -300  # Y coordinate of the bottom edge of the image
-image_top = 300  # Y coordinate of the top edge of the image
-
+# You can create a turtle to display the score
 score_display = turtle.Turtle()
-score_display.penup()
 score_display.hideturtle()
+score_display.penup()
+score_display.goto(0, game_screen.window_height() // 2 - 250)
+score_display.write("Score: 0", align="center", font=("Arial", 30, "normal"))
+
+
 score = 0
 
-score_display.goto(-60, 200)
 
-# Function to update the score when the image area is clicked
+
 def update_score(x, y):
     global score
-    # Check if the click is within the image area
-    if image_left < x < image_right and image_bottom < y < image_top:
-        score += 1
-        score_display.clear()
-        score_display.write(f"Score: {score}", align="left", font=("Arial", 24, "normal"))
+    score += 1
+    score_display.clear()  # Clear the previous score
+    score_display.write(f"Score: {score}", align="center", font=("Arial", 30, "normal"))
 
 
-# Bind the click event on the screen
-game_screen.onscreenclick(update_score)
+# Function to move the eagle to a random location
+def move_eagle_randomly():
+    # Hide the moving eagle before moving
+    moving_eagle.hideturtle()
+
+    # Generate random coordinates within the screen boundaries
+    x = random.randint(-game_screen.window_width() // 2 + 10, game_screen.window_width() // 2 - 10)
+    y = random.randint(-game_screen.window_height() // 2 + 10, game_screen.window_height() // 2 - 10)
+
+    # Move the moving eagle to the new coordinates
+    moving_eagle.goto(x, y)
+
+    # Show the moving eagle at the new location
+    moving_eagle.showturtle()
+
+    # Schedule the next move
+    game_screen.ontimer(move_eagle_randomly, 1000)  # Move every 1000 milliseconds
+
+
+# Set up the click event to update the score
+moving_eagle.onclick(update_score)
+
+# Start the movement for the moving eagle
+
+
+
+# Optionally hide the static eagle
 
 turtle.listen()
 
@@ -167,5 +192,6 @@ turtle_switched_red()
 increase_score_red()
 increase_score_blue()
 turtle_time()
+move_eagle_randomly()
 
 turtle.mainloop()
