@@ -82,7 +82,7 @@ game_counter.goto(0, 300)
 count = 0
 
 
-def pery_counter():
+def my_game_counter():
     game_counter.clear()
     game_counter.write(f"Total Switch: {count}", align="center", font=("Arial", 24, "normal"))
 
@@ -90,7 +90,7 @@ def pery_counter():
 def counter_of_percy():
     global count
     count += 1
-    pery_counter()
+    my_game_counter()
 
 
 def counter_white():
@@ -182,7 +182,7 @@ moving_eagle.onclick(update_score)
 
 turtle.listen()
 
-pery_counter()
+my_game_counter()
 turtle_switched_blue()
 turtle_switched_red()
 increase_score_red()
