@@ -5,27 +5,27 @@ game_screen = turtle.Screen()
 game_screen.bgcolor("red")
 game_screen.title("Eagle Game")
 
-Franklin = turtle.Turtle()
+game_turtle = turtle.Turtle()
 
 #Switch
 
-Franklin.speed(0)
-Franklin.color("Black")
-Franklin.penup()
-Franklin.hideturtle()
-Franklin.goto(0, 350)
+game_turtle.speed(0)
+game_turtle.color("Black")
+game_turtle.penup()
+game_turtle.hideturtle()
+game_turtle.goto(0, 350)
 score_a = 0
 score_b = 0
 
 
 def turtle_switched_red():
-    Franklin.clear()
-    Franklin.write(f"You Switched Red  ", align="center", font=("Courier", 24, "normal"))
+    game_turtle.clear()
+    game_turtle.write(f"You Switched Red  ", align="center", font=("Courier", 24, "normal"))
 
 
 def turtle_switched_blue():
-    Franklin.clear()
-    Franklin.write(f"You Switched Blue  ", align="center", font=("Courier", 24, "normal"))
+    game_turtle.clear()
+    game_turtle.write(f"You Switched Blue  ", align="center", font=("Courier", 24, "normal"))
 
 
 def increase_score_red():
@@ -57,11 +57,11 @@ def change_color_black():
 
 
 def change_color_score_board_blue():
-    Franklin.color("blue")
+    game_turtle.color("blue")
 
 
 def change_color_score_board_red():
-    Franklin.color("red")
+    game_turtle.color("red")
 
 
 turtle.listen()
@@ -73,18 +73,18 @@ turtle_switched_red()
 
 #counter
 
-Percy = turtle.Turtle()
+game_counter = turtle.Turtle()
 
-Percy.hideturtle()
-Percy.penup()
-Percy.goto(0, 300)
+game_counter.hideturtle()
+game_counter.penup()
+game_counter.goto(0, 300)
 
 count = 0
 
 
 def pery_counter():
-    Percy.clear()
-    Percy.write(f"Total Switch: {count}", align="center", font=("Arial", 24, "normal"))
+    game_counter.clear()
+    game_counter.write(f"Total Switch: {count}", align="center", font=("Arial", 24, "normal"))
 
 
 def counter_of_percy():
@@ -95,12 +95,12 @@ def counter_of_percy():
 
 def counter_white():
     counter_of_percy()
-    Percy.color("white")
+    game_counter.color("white")
 
 
 def counter_black():
     counter_of_percy()
-    Percy.color("black")
+    game_counter.color("black")
 
 
 time_counter = turtle.Turtle()
