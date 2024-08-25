@@ -7,7 +7,7 @@ game_screen.title("Eagle Game")
 
 Franklin = turtle.Turtle()
 
-#ScoreBoard
+#Switch
 
 Franklin.speed(0)
 Franklin.color("Black")
@@ -127,12 +127,11 @@ def time_counter_black():
     time_counter.color("black")
 
 
-# don't pass here
 
 # moving image
 game_screen.addshape("eagle.gif.gif")
 
-# Create the turtle objects
+# First you should create a turtle object
 moving_eagle = turtle.Turtle()
 moving_eagle.shape("eagle.gif.gif")
 moving_eagle.penup()
@@ -158,31 +157,28 @@ def update_score(x, y):
 
 # Function to move the eagle to a random location
 def move_eagle_randomly():
-    # Hide the moving eagle before moving
+    # If you want a teleport system you should hide the moving eagle before moving
     moving_eagle.hideturtle()
 
-    # Generate random coordinates within the screen boundaries
+    # You can generate random coordinates within the screen boundaries
     x = random.randint(-game_screen.window_width() // 2 + 10, game_screen.window_width() // 2 - 10)
     y = random.randint(-game_screen.window_height() // 2 + 10, game_screen.window_height() // 2 - 10)
 
-    # Move the moving eagle to the new coordinates
+    # You can move the moving eagle to the new coordinates
     moving_eagle.goto(x, y)
 
-    # Show the moving eagle at the new location
+    # You can show the moving eagle at the new location
     moving_eagle.showturtle()
 
     # Schedule the next move
     game_screen.ontimer(move_eagle_randomly, 1000)  # Move every 1000 milliseconds
 
 
-# Set up the click event to update the score
+# You can set up the click event to update the score
 moving_eagle.onclick(update_score)
 
-# Start the movement for the moving eagle
 
 
-
-# Optionally hide the static eagle
 
 turtle.listen()
 
